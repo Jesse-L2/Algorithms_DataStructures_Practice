@@ -16,3 +16,28 @@ def merge_sort(arr, l, r):
 def merge(arr, l, m, r):
     # Create temp arrays
     left = arr[l:m + 1]
+    right = arr[m + 1: r + 1]
+
+    i = 0 # left index
+    j = 0 # right index
+    k = l # arr index
+
+    # Merge both sorted halfs into the original array
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            arr[k] = left[i]
+            i += 1
+        else:
+            arr[k] = right[j]
+            j += 1
+        k += 1
+
+    # Cases where elements remain in either half
+    while i < len(left):
+        arr[k] = left[i]
+        i += 1
+        k += 1
+    while j < len(right):
+        arr[k] = right[j]
+        j += 1
+        k += 1
