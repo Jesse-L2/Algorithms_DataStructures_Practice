@@ -1,4 +1,4 @@
-def merge_sort(arr, l, r):
+def merge_sort(arr: list[int], l, r) -> list[int]:
     if l - r + 1 <= 1:
         # Base case where len(arr) is <= 1
         return arr
