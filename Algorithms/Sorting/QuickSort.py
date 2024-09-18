@@ -17,6 +17,7 @@ def quick_sort(arr: list[int], start, end) -> list[int]:
             left += 1
 
     arr[end] = arr[left]
+    # move pivot to the value that the left pointer got to
     arr[left] = pivot
 
     # Sort left
