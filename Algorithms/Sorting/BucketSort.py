@@ -10,7 +10,7 @@ def bucket_sort(arr: list[int]) -> list[int]:
     # Fill original array
     i = 0
     for n in range(len(counts)):
-        for j in range(counts[n]):
+        for _ in range(counts[n]):
             arr[i] = n
             i += 1
     return arr
