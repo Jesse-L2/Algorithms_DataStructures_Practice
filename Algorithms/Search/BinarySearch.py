@@ -20,3 +20,27 @@ def binary_search(arr: list[int], target) -> list[int]:
         else:
             return mid
         return -1
+     
+def binary_range_search(low, high):
+    while low <= high:
+        mid = low + (high - low) // 2
+        
+        if is_correct(mid) > 0:
+            high = mid - 1
+        elif is_correct(mid) < 0:
+            low = mid + 1
+        else:
+            return mid
+        
+    return -1
+
+max_value = 100
+
+def is_correct(n):
+    # Returns 1 if n too big, -1 too small, 0 if correct
+    if n > max_value:
+        return 1
+    elif n < max_value:
+        return -1
+    else:
+        return 0
