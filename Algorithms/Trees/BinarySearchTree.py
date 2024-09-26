@@ -1,9 +1,12 @@
 """
 Can search for values in O(log n) time just like an array
+Technically you could call it O(h) time where h is the height of the Binary Search Tree
 BSTs allow for insertion and deletion of values in O(log n) time, unlike a sorted asrray which would require O(n) time
 The simplest way to traverse a tree is with recursion
 All nodes to the left will be smaller and all nodes to the right will be larger
 """
+
+from BinaryTree import TreeNode
 
 def search(root, target):
     if not root:
@@ -15,3 +18,20 @@ def search(root, target):
         return search(root.left, target)
     else:
         return True
+    
+def insert(root, val):
+    # log(n) time
+    if not root:
+        return TreeNode(val)
+    
+    if val < root.val:
+        root.left = insert(root.left, val)
+    elif val > root.val:
+        root.right = insert(root.right, val)
+    return root
+
+def remove(root, val):
+    pass
+
+def minValueNode(root):
+    pass
