@@ -20,8 +20,10 @@ def search(root, target):
         return True
     
 def insert(root, val):
+    # Insert a new node and return the root of the BST
     # log(n) time
     if not root:
+        # val becomes root node
         return TreeNode(val)
     
     if val < root.val:
@@ -31,7 +33,26 @@ def insert(root, val):
     return root
 
 def remove(root, val):
-    pass
+    if not root:
+        return None
+    
+    if val < root.val:
+        root.left = remove(root.left, val)
+    elif val > root.val:
+        root.right = remove(root.right, val)
+    else:
+        if not root.left:
+            return root.right
+        elif not root.right:
+            return root.left
+        else:
+            min_node = minValueNode(root.right)
+            root.val = min_node.val
+            root.right = remove(root.right, min_node.val)
+    return root
 
 def minValueNode(root):
-    pass
+    curr = root
+    while curr and curr.left:
+        curr = curr.left
+    return curr
