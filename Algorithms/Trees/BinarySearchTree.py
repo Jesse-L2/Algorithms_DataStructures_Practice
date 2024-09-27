@@ -56,3 +56,9 @@ def minValueNode(root):
     while curr and curr.left:
         curr = curr.left
     return curr
+
+def maxValueNode(root):
+    curr = root
+    while curr and curr.right:
+        curr = curr.right
+    return curr
