@@ -46,6 +46,7 @@ def remove(root, val):
         elif not root.right:
             return root.left
         else:
+            # case for 2 child nodes
             min_node = minValueNode(root.right)
             root.val = min_node.val
             root.right = remove(root.right, min_node.val)
