@@ -16,3 +16,17 @@ def canReachLeaf(root):
     if canReachLeaf(root.right):
         return True
     return False
+
+def leafPath(root, path):
+    if not root or root.val == 0:
+        return False
+    path.append(root.val)
+
+    if not root.left and not root.right: # check if node is a leaf node
+        return True
+    if leafPath(root.left, path):
+        return True
+    if leafPath(root.right, path):
+        return True
+    path.pop() # backtracking step - we know the path doesn't lead to a solution so we backtrack and pop it off
+    return False
