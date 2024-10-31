@@ -1,4 +1,5 @@
 # Determine if a path exists from the root of the tree to a leaf node. Return True or False, it may not contain any zeroes
+# Backtracking runs through every node 1 time, so is O(n) time complexity
 class TreeNode:
     def __init__(self, val):
         self.val = val
