@@ -1,0 +1,16 @@
+from Data_Structures.Stack.Stack import ArrayStack
+
+def is_matched(expr):
+    """Return True if all elements matched, False if not"""
+    left = '({['
+    right = ')}]'
+    S = ArrayStack()
+    for ch in expr:
+        if ch in left: # if we have acceptable left, add to stack
+            S.push(ch)
+        elif ch in right:
+            if S.is_empty(): # have a closer with no left to match with
+                return False
+            if right.index(ch) != left.index(S.pop()): # matching with established order in left and right and popping from the stack
+                return False
+    return S.is_empty() # Stack has to be empty if all symbols matched
