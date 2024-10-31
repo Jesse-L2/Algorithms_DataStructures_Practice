@@ -14,3 +14,24 @@ def is_matched(expr):
             if right.index(ch) != left.index(S.pop()): # matching with established order in left and right and popping from the stack
                 return False
     return S.is_empty() # Stack has to be empty if all symbols matched
+
+def is_matched_HTML(expr):
+    """Return True if all HTML tags match, else False"""
+    """string.find(substring, start, end)"""
+    S = ArrayStack()
+    j = expr.find('<') # find first '<'
+    while j != -1:
+        k = expr.find('>', j + 1)
+        if k == -1:
+            return False
+        tag = expr[j + 1: k]
+        if not tag.startswith('/'): # opening tag
+            S.push(tag) # push to stack
+        else: # closing tag
+            if S.is_empty():
+                return False # empty Stack, no match
+            if tag[1:] != S.pop():
+                return False
+        j = exp.find('<', k + 1) # Find next '<'
+
+    return S.is_empty() # All tags matched = True, else False
