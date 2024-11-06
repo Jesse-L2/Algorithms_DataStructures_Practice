@@ -25,7 +25,7 @@ class MinHeap:
             self.heap[i // 2] = tmp
             i = i // 2
 
-    def pop(self):
+    def pop(self): # O(log n) time complexity 
         if len(self.heap) == 1:
             return None
         if len(self.heap) == 2:
@@ -37,6 +37,7 @@ class MinHeap:
         i = 1
         # "Percolate down" (shift down while order property not satisfied)
         while 2 * i < len(self.heap):
+            # Case with a left and right child
             if (2 * i + 1 < len(self.heap) and self.heap[2 * i + 1] < self.heap[2 * i] and self.heap[i] > self.heap[2 * i + 1]):
                 # Swap right child
                 tmp = self.heap[i]
@@ -44,14 +45,43 @@ class MinHeap:
                 self.heap[2 * i + 1] = tmp
                 i = 2 * i + 1
             elif self.heap[i] > self.heap[2 * i]:
+                # Case where value is too big for current spot and needs to be shifted down
                 # Swap left child
+                tmp = self.heap[i]
+                self.heap[i] = self.heap[2 * i]
+                self.heap[2 * i] = tmp
+                i = 2 * i
+            else: # Case where the node is already in the right position
+                break
+        return res # original root node
+
+# Heapify (min heap, also works on max heap) -> O(n) time
+def heapify(self, arr):
+    # Move 0 pos to end
+    arr.append(arr[0])
+
+    self.heap = arr
+    curr = (len(self.heap) - 1) // 2
+    while curr > 0:
+        # Percolate down
+        i = curr
+        while 2 * i < len(self.heap):
+            if (2 * i + 1 < len(self.heap) and 
+            self.heap[2 * i + 1] < self.heap[2 * i] and 
+            self.heap[i] > self.heap[2 * i + 1]):
+                # Swap right 
+                tmp = self.heap[i]
+                self.heap[i] = self.heap[2 * i + 1]
+                self.heap[2 * i + 1] = tmp
+                i = 2 * i + 1
+            elif self.heap[i] > self.heap[2 * i]:
+                # Swap left 
                 tmp = self.heap[i]
                 self.heap[i] = self.heap[2 * i]
                 self.heap[2 * i] = tmp
                 i = 2 * i
             else:
                 break
-        return res
+        curr -= 1
 
-
-    
+# Heaps can sort values in n log(n) time
