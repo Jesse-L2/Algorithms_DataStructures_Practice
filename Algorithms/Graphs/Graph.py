@@ -47,6 +47,25 @@ def bfs(matrix):
     queue = deque() # TODO: create deque in Stack/DoubleEndedQueue.py
     queue.append((0, 0))
     visited.add((0, 0))
+    length = 0
+
+    while queue:
+        for i in range(len(queue)):
+            r, c = queue.popleft()
+
+            if r == ROWS - 1 and c == COLS - 1:
+                return length
+            
+            neighbors = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+            for dr, dc in neighbors: # dr = difference in row, dc = difference in column
+                if (min(r + dr, c + dc) < 0 or r + dr == ROWS or c + dc == COLS or (r + dr, c + dc) in visited or matrix[r + dr][c + dc] == 1):
+                    continue
+                queue.append((r + dr, c + dc))
+                visited.add((r + dr, c + dc))
+        length += 1
+
+print(bfs(matrix))
+
     
 class GraphNode: # Adjacency List
     def __init__(self, val):
