@@ -71,3 +71,7 @@ class GraphNode: # Adjacency List
     def __init__(self, val):
         self.val = val
         self.neighbors = []
+
+# Adjacency List/Matrix
+adjList = {"A": [], "B": []}
+edges = [["A", "B"], ["B", "C"], ["B", "E"], ["C", "E"], ["E", "D"]]
