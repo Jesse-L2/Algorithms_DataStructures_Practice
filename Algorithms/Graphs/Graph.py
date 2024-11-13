@@ -73,5 +73,56 @@ class GraphNode: # Adjacency List
         self.neighbors = []
 
 # Adjacency List/Matrix
-adjList = {"A": [], "B": []}
-edges = [["A", "B"], ["B", "C"], ["B", "E"], ["C", "E"], ["E", "D"]]
+adjList = {"A": [], "B": []} # HashMap - key value pairs
+edges = [["A", "B"], ["B", "C"], ["B", "E"], ["C", "E"], ["E", "D"]] # DirectedEdges - edge from item1 to item2 in each sublist
+
+# Building an Adjacency List / graph
+for source, destination in edges:  # could also do first, second
+
+    if source not in adjList:
+        adjList[source] = [] # if not in, add empty node
+    if destination not in adjList:
+        adjList[destination] = []
+
+    adjList[source].append(destination)
+
+def adj_dfs(node, target, adjList, visited): # Count paths through backtracking
+    # Time complexity O(N^V) exponential as the size of the graph grows (V = vertices)
+    if node in visited:
+        return 0
+    if node == target:
+        return 1
+    
+    count = 0
+    visited.add(node)
+    for neighbor in adjList[node]:
+        count += adj_dfs(neighbor, target, adjList, visited):
+    visited.remove(node)
+
+    return count
+
+print(adj_dfs("A", "D", adjList, set())) # returns number of paths from A to D (2)
+
+def adj_bfs(node, target, adjList): # What is the shortest path from node to target node
+    # Time complexity O(V+ E) (E = edges, V = vertices)
+    length = 0
+    visited = set()
+    visited.add(node)
+    queue = deque()
+    queue.append(node)
+
+    while queue:
+        for i in range(len(queue)):
+            curr = queue.popleft()
+            if curr == target:
+                return length
+            
+            for neighbor in adjList[curr]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+            
+        length += 1
+    return length
+
+print(adj_bfs("A", "D", adjList)) # returns shortest path from A to D (2)
