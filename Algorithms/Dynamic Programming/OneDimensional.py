@@ -19,16 +19,17 @@ def brute_force_fib(n): # O(n^2)
     else:
         return brute_force_fib(n - 1) + brute_force_fib(n - 2)
     
-def memoized_fib(n, cache): # bottom up appraoch, O(n) solution
+def memoized_fib(n, cache): # top down appraoch, O(n) solution
     if n <= 1:
         return n
     if n in cache:
         return cache[n]
-    
+    # cache then return
     cache[n] = memoized_fib(n - 1, cache) + memoized_fib(n - 2, cache)
     return cache[n]
 
-def dp(n):
+def dp(n): # bottom up approach, O(n) time complexity
+    # start at base cases and calculate up
     # version only storing the 2 previous fib numbers, bringing space complexity down to O(1) because we are overwriting old numbers
     if n < 2:
         return n
