@@ -1,3 +1,4 @@
+from collections import deque
 # Types - Matrix, Adjacency Matrix, Adjacency List
 # Nodes are referred to as verices and the pointers that connect the nodes are referred to as edges
 # In a matrix, 0 is used to represent an empty node and 1 is used to represent a full or blocked node
@@ -44,7 +45,7 @@ def bfs(matrix):
     # Pop from queue -> visit neighbors of popped vertex --> continue to target position
     ROWS, COLS = len(matrix), len(matrix[0])
     visited = set()
-    queue = deque() # TODO: create deque in Stack/DoubleEndedQueue.py
+    queue = deque()
     queue.append((0, 0))
     visited.add((0, 0))
     length = 0
