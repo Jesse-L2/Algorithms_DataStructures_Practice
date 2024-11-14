@@ -1,3 +1,7 @@
+"""
+    Breadth First Search(BFS) is a fundamental graph traversal algorithm that begins with a node, then traverses all adjacent nodes. Once all adjacent nodes are visted, all of their adjacent nodes are traversed. Here we are traversing level by level. Djikstra's, Kahn's, and Prim's algorithms are based on BFS. 
+"""
+
 # Go layer by layer down the tree (better done iteratively than with recursion)
 # aka level order traversal
 
