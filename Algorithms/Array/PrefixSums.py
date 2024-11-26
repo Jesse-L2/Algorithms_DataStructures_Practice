@@ -33,3 +33,16 @@ class PostfixSum:
         postLeft = self.postfix[left]
         postRight = self.postfix[right + 1] if right + 1 < len(self.postfix) else 0
         return (postLeft, postRight)
+
+
+# Could also do a prefix product
+class PrefixProduct:
+    def __init__(self, nums):
+        self.prefixProduct = []
+        total = 0
+        
+        for num in nums:
+            total *= num
+            self.prefixProduct.append(total)
+
+        return PrefixProduct
