@@ -13,10 +13,10 @@ class PrefixSum:
             total += n
             self.prefix.append(total)
 
-    def rangeSum(self, left, right):
-        preRight = self.prefix[right]
-        preLeft = self.prefix[left - 1] if left > 0 else 0
-        return (preRight, preLeft)
+    def rangeSum(self, left, right): # O(1) time
+        preRight = self.prefix[right] # calculating the right portion (index 0 to right)
+        preLeft = self.prefix[left - 1] if left > 0 else 0 # calculating left portion (value at left position of prefix sum array)
+        return (preRight - preLeft)
     
 class PostfixSum:
     def __init__(self, nums):
@@ -32,7 +32,7 @@ class PostfixSum:
     def rangeSum(self, left, right):
         postLeft = self.postfix[left]
         postRight = self.postfix[right + 1] if right + 1 < len(self.postfix) else 0
-        return (postLeft, postRight)
+        return (postLeft - postRight)
 
 
 # Could also do a prefix product
