@@ -17,7 +17,7 @@ class Trie:
             if char not in curr.children:
                 curr.children[char] = TrieNode()
             curr = curr.children[char]
-        curr.word = True
+        curr.word = True # mark the last character as the end of the word
 
     def search(self, word):
         curr = self.root
