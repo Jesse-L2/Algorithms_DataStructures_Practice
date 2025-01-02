@@ -25,15 +25,15 @@ def inorder(root):
             print(curr.value)
             curr = curr.right # set pointer to right child and then run it on entire right subtree
 
-# Preorder traversal involves
+# Preorder traversal involves processing current node before child nodes
 
-def preorder(root):
-    stack = []
+def preorder(root): 
     curr = root
+    stack = []
     while curr or stack:
         if curr:
             print(curr.value)
-            if curr.right:
+            if curr.right: # if right node, push to stack, will process later
                 stack.append(curr.right)
             curr = curr.left
         else:
@@ -42,9 +42,9 @@ def preorder(root):
 # Postorder traversal involves traversing the left child, the right child, and then the root. It requires two stacks, visit and stack. visit and stack will always be the same size. stack will be used to store the nodes we are currently processing, while visit will keep track of whether we have previously visited the corresponding node in the stack
 # Pop from stack and visit and if curr is not null, then we have not visited the node. 
 
-def postorder(root):
+def postorder(root): # could also be done as a pair of values rather than 2 stacks
     stack = [root]
-    visit = [False]
+    visit = [False] # requires two stacks to process otherwise we would have to revisit nodes
     while stack:
         curr, visited = stack.pop(), visit.pop()
         if curr:
